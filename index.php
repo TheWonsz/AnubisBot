@@ -5,6 +5,8 @@ require_once __DIR__.'/vendor/autoload.php';
 $success = '#25ae19';
 $danger = '#ff391f';
 
+use RestCord\DiscordClient;
+
 // $info = [
 //     'color' => $success,
 //     'status' => 'Online',
