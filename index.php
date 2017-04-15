@@ -1,35 +1,49 @@
 <?php
 
-require_once __DIR__.'/vendor/autoload.php';
+// require_once __DIR__.'/vendor/autoload.php';
 
 $success = '#25ae19';
 $danger = '#ff391f';
 
-use Curl\Curl;
-use Ratchet\Client as DC;
+if (file_exists(getcwd().'/../../anubisbot/bot_online')) {
+    $info = [
+        'color' => $success,
+        'status' => 'online',
+    ];
+} else {
+    $info = [
+        'color' => $danger,
+        'status' => 'offline',
+    ];
+}
 
-$guildid = env('GUILD_ID', '');
+require __DIR__.'/svg.php';
 
-$curl = new Curl();
-$curl->setHeader('Authorization', 'Bot '.env('TOKEN', ''));
-$curl->setHeader('User-Agent', 'AnubisBot Back End');
-$curl->setHeader('Content-type', 'application/json');
-$curl->get('https://discordapp.com/api/v6/gateway/bot');
+// use Curl\Curl;
+// use Ratchet\Client as DC;
 
-$wss = $curl->response->url;
+// $guildid = env('GUILD_ID', '');
 
-$op = [
-    'op' => 8,
-    'd' => null,
-    's' => 0,
-    't' => 'GUILD_CREATE',
-];
+// $curl = new Curl();
+// $curl->setHeader('Authorization', 'Bot '.env('TOKEN', ''));
+// $curl->setHeader('User-Agent', 'AnubisBot Back End');
+// $curl->setHeader('Content-type', 'application/json');
+// $curl->get('https://discordapp.com/api/v6/gateway/bot');
 
-$ws = DC\connect($wss, $op)->then(function ($c) {
-    dd($c);
-});
+// $wss = $curl->response->url;
 
-dd($ws);
+// $op = [
+//     'op' => 8,
+//     'd' => null,
+//     's' => 0,
+//     't' => 'GUILD_CREATE',
+// ];
+
+// $ws = DC\connect($wss, $op)->then(function ($c) {
+//     dd($c);
+// });
+
+// dd($ws);
 
 // use RestCord\DiscordClient;
 
