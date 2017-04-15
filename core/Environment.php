@@ -1,7 +1,5 @@
 <?php
 
-<?php
-
 namespace Core;
 
 use Dotenv\Dotenv;
