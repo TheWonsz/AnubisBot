@@ -8,7 +8,7 @@ class HomeController extends BaseController
 {
     public function getIndex()
     {
-        $doc = app_path().'/views/docs/markdown/helpers.md';
+        $doc = app_path().'/views/docs/markdown/installation.md';
         $this->with(['doc' => $doc])->_render('docs.getdoc', 'Installation');
     }
 
