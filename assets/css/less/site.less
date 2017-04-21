@@ -1,0 +1,175 @@
+/*!
+ * Scara Documentation Bootsrap Theme
+ */
+
+@import "bootstrap/bootstrap.less";
+
+@import url('https://fonts.googleapis.com/css?family=Magra');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
+a {
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    transition: .5s;
+}
+
+a:hover {
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    transition: .5s;
+}
+
+html
+{
+	position: relative;
+	min-height: 100%;
+}
+
+body
+{
+	margin-bottom: 91px;
+}
+
+body, html
+{
+	font-family: Magra, sans-serif;
+	font-size: 12pt;
+}
+
+.table
+{
+	font-size: 11pt;
+}
+
+@media only screen and (min-width: 768px)
+{
+	ul.nav li.dropdown:hover > ul.dropdown-menu
+	{
+		display: block;
+	}
+}
+
+.btn
+{
+	border-radius: 8px;
+}
+
+.btn-round
+{
+	border-radius: 30px;
+}
+
+.notify-text
+{
+	text-align: center;
+	font-size: 16px;
+}
+
+.pageContent
+{
+	display: block;
+}
+
+.navbar-deault a
+{
+	text-shadow: -1px -1px 0 #0C0A09 !important;
+}
+
+.footer
+{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 61px;
+	color: @navbar-default-color;
+	text-align: center;
+}
+
+.footer_text
+{
+	line-height: 61px;
+}
+
+@media only screen and (max-width: 530px)
+{
+	.footer_text
+	{
+		line-height: 35px;
+		vertical-align: middle;
+	}
+	.footer
+	{
+		height: 70px;
+	}
+}
+
+.sidebar-head
+{
+	border-bottom: 1px solid #CCC;
+}
+
+h2 { border-bottom: 1px solid #CCC; }
+
+pre
+{
+	border-color: #e7e7e7;
+	border-width: 0 1px 4px 1px;
+	border-radius: 0;
+	padding: 5px;
+}
+
+pre code
+{
+	font-family: Inconsolata, monospace;
+	font-size: 15px !important;
+	padding: 5px;
+}
+
+:not(pre)>code
+{
+	color: #986801;
+	background-color: lighten(@navbar-default-bg, 56%);
+	box-shadow: 0 2px 1px rgba(0,0,0,.125);
+}
+
+.header-method code
+{
+	margin-top: 15px !important;
+	font-size: 14px;
+	color: #555;
+	font-weight: bold;
+	padding: 5px;
+}
+
+.header-method:not(.first-method) { margin-top: 35px; }
+
+.header-heading
+{
+	margin-top: 35px;
+}
+
+#backToTopA
+{
+	display: none;
+	// width: 20px;
+	// height: 20px;
+	background-color: rgba(42, 70, 100, 0.7);
+	padding: 10px;
+	border-radius: 20px;
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	z-index: 1000;
+	cursor: pointer;
+}
+
+#backToTopA .arrow
+{
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: url('http://cdn.kalebklein.com/images/kk/bttarrow.png') center center no-repeat;
+	background-size: 20px 20px;
+}

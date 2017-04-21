@@ -1,21 +1,48 @@
-#!/bin/env php
+#!/usr/bin/env php
 <?php
 
+// Include autoloader
 require_once __DIR__.'/vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
-use Core\Console\Console;
+use Scara\Console\Console;
 
 $app = new Application();
+
+// Register commands
 $console = new Console();
 
-// Get console commands
-$commands = config_get('console');
+// Holds all commands defined in array
+$commands = [
+    // database commands
+    'database' => [
+        'migrate',
+        'MigrationBuilder',
+        'rollback',
+        'reset',
+        'truncate',
+        'delete',
+        'seed',
+    ],
+    'ClearCache',
+    // controller commands
+    'controller' => [
+        'CreateController',
+        'DeleteController',
+    ],
+    'ConfigPublish',
+];
 
-// Register all commands with Symfony's console app
-foreach ($commands as $command) {
-    $app->add($console->register($command));
+// Loop through commands array and register each command
+foreach($commands as $key => $value) {
+    if(is_array($value)) {
+        foreach($value as $command) {
+            $app->add($console->register($key.'/'.$command));
+        }
+    }
+    else {
+        $app->add($console->register($value));
+    }
 }
 
-// Run the app
 $app->run();

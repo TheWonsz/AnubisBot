@@ -1,125 +1,26 @@
-# AnubisBot
-[![StyleCI](https://styleci.io/repos/87753072/shield?branch=master)](https://styleci.io/repos/87753072)
-[![Latest Stable Version](https://poser.pugx.org/pazuzu156/anubisbot/v/stable?format=flat-square)](https://packagist.org/packages/pazuzu156/anubisbot)
-[![Latest Unstable Version](https://poser.pugx.org/pazuzu156/anubisbot/v/unstable?format=flat-square)](https://packagist.org/packages/pazuzu156/anubisbot)
-[![Total Downloads](https://poser.pugx.org/pazuzu156/anubisbot/downloads?format=flat-square)](https://packagist.org/packages/pazuzu156/anubisbot)
-[![License](https://poser.pugx.org/pazuzu156/anubisbot/license?format=flat-square)](https://packagist.org/packages/pazuzu156/anubisbot)
-[![Bot Status](https://api.kalebklein.com/anubisbot_status)](https://api.kalebklein.com/anubisbot_status)
+# Scara
+[![StyleCI](https://styleci.io/repos/54073597/shield?branch=master)](https://styleci.io/repos/54073597)
+[![Packagist](https://img.shields.io/packagist/v/scaramvc/scara.svg?style=flat-square)](https://packagist.org/packages/scaramvc/scara)
+[![Downloads](https://img.shields.io/packagist/dt/scaramvc/scara.svg?style=flat-square)](https://packagist.org/packages/scaramvc/scara)
+[![Gemnasium](https://img.shields.io/gemnasium/ScaraMVC/Scara.svg?style=flat-square)](https://gemnasium.com/github.com/ScaraMVC/Scara)
+[![Packagist](https://img.shields.io/packagist/l/scaramvc/scara.svg?style=flat-square)](https://packagist.org/packages/scaramvc/scara)
 
-A Discord bot built in PHP
+Scara is a PHP MVC Framework built to be lightweight and simple to use.
 
-## Install
-Use composer to install the latest stable version of AnubisBot
+## What is this?
+It's an MVC (Model, View, Controller) framework built in PHP from scratch. Why build one if there are already others out there? 2 reasons..
 
-`$ composer create-project pazuzu156/anubisbot --prefer-dist`
+1. Dive head-first into building a large-scale application framework
+2. To serve the needs of what I need it for, and change it in any capacity as I see fit.
 
-If you want the latest codebase for AnubisBot, please use the `dev-develop` branch:
+## Can I use it now?
+Yes. Version 1.0 is Scara's first stable release. It should be ready for use now. If you find any bugs, please [report them](https://github.com/ScaraMVC/Scara/issues).
 
-`$ composer create-project pazuzu156/anubisbot:dev-develop --stability=dev --prefer-dist`  
-or  
-`$ composer create-project pazuzu156/anubisbot:dev-master --stability=dev --prefer-dist`  
-for the master branch
+## Documentation
+You can learn about Scara and how to use it by checking out the [official documentation](https://api.kalebklein.com/scara/docs)
 
-`dev-develop` is the most active branch. If you want to use `master`, `dev-develop` is merged into `master` daily, so while changes are always frequent, it's more stable than `dev-develop`
+## Contributors
+[Kaleb Klein](http://kalebklein.com)
 
-## Command Registrar
-`registrar.php` holds commands to register 
-
-A seperate .env file houses bot information  
-`DEBUG` Enables/disables debugging for bot  
-`LOG_TO_FILE` Whether you want to log to files or not  
-`LOG_DISCORDPHP` Whether you want DiscordPHP to have logging or not  
-`TOKEN` houses your bot's auth token  
-`NAME` is for the name of your bot  
-`DESCRIPTION` is the description of your bot  
-`PREFIX` is the prefix to use for your bot (used for recognizing commands)  
-`PREFIX_SPACE` tells the bot whether prefixes should also include a space  
-`BOTSPAM_CHANNEL_ID` the channel id that AnubisBot's auto-messages should go
-
-## Commands/Aliases
-Commands are the bot commands. Commands can have sub commands, which act as different bits of the master command. Each command can also be aliased.
-
-### Commands
-To create a new command, run: `$ php cli make:command MyNewCommand`. This will create a new command in `app/commands/MyNewCommand.php`.
-
-To create a new command alias, run: `$ php cli make:alias MyNewAlias`. This will create a new command alias in `app/aliases/MyNewAlias.php`.
-
-Commands are defined by extending the base `Command` class. A command also has 2 required properties. One of which MUST have content within it.
-
-`protected $name = 'mynewcommand'` defined the command's name. Or what the user will use in Discord to expect a reaction from the bot.  
-`protected $description = ''` gives a command it's description. Used in `!help`
-
-### Sub Commands
-Sub commands are defined by defining a public method within your command class. In your `MyNewCommand.php` define the sub command `subby` by:   
-```php
-/**
- * This block is my description ;).
- *
- * @param \Core\Parameters $p
- *
- * @return void
- */
-public function subby(Parameters $p)
-{
-    $this->message->reply('I am a sub command!');
-}
-```
-
-While commands have their `$description` property to define their `!help` descriptions, sub commands utilize their PHPDoc blocks for their descriptions.
-
-### Command Description Variables
-Commands and sub commands have description variables that can be used to give your bot specific info (as well as command inheritance) in `!help` descriptions
-
-`{PREFIX}` is replaced with your bot's prefix  
-`{NAME}` is replaced with your bot's name  
-`{VERSION}` is replaced with the bot's current version  
-`{INHERIT_COMMAND_SUBCOMMAND}` inherits a command's (and sub command's) description
-
-`{INHERIT_COMMAND_SUBCOMMAND}` is different as the variable is also varying. `COMMAND` is replaced with the command's `$name` property value and `SUBCOMMAND` is replaced with the sub command's method name.
-
-### Aliases
-Aliases have an extra required property (which is now public)
-
-`public $alias = 'mynewcommand'` Tells the master command list that this command is used to alias the `mynewcommand` command.
-
-Within your alias's sub command (yes, even aliases have them) Be sure to include the inheritance doc variable, and call on the class's `runCommand()` method to run the master command's command. :wink:
-
-```php
-/**
- * {INHERIT_MYNEWCOMMAND_SUBBY}
- *
- * @param \Core\Parameters $p
- *
- * @return void
- */
-public function newsubby(Parameters $p)
-{
-    $this->runCommand('subby', $p);
-}
-```
-
-### Registering Commands/Aliases
-To register a command, inside `registrar.php` under `commands` add the PHP class calling method to the array:
-
-```php
-...
-    'commands' => [
-        ...
-        App\Commands\MyNewCommand::class,
-        ...
-    ],
-...
-```
-
-To register an alias, do the same, but only inside the `aliases` array
-
-## Run
-Run the bot with `$ php cli run`
-
-Running the above will also run the on-start changelog message. To disable this, add `false` at the end (Unless you set `DEBUG` equal to `true` inside your `.env` file)
-
-## Custom CLI Console Commands
-AnubisBot has support for adding custom Symfony commands. Just run: `$ php cli make:console MyNewConsoleCommand` and add the command to `registrar.php` under the `console` array. Then just call `$ php cli <MYNEWCONSOLECOMMAND>` replaceing `<MYNEWCONSOLECOMMAND>` with whatever you used in the commands `$this->setName()` call.
-
-## Invite
-If you want to invite the bot instead of running it yourself, [click here](https://discordapp.com/oauth2/authorize?client_id=302580156176924672&scope=bot&permissions=36957190)
+## License
+This framework is covered by the [GNU General Public License v2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
