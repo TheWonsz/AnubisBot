@@ -15,6 +15,7 @@
         <div class="container">
           <a class="navbar-brand" href="{{ Html::url('/') }}">{{ config_get('appname', 'app') }}</a>
           <div class="navbar-header">
+            {{--
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
               <span class="sr-only">Mobile Menu</span>
               <span class="icon-bar"></span>
@@ -36,6 +37,7 @@
             </ul>
           </nav>
         </div>
+        --}}
       </div>
     </nav>
     <div class="pageContent">
