@@ -8,14 +8,14 @@ header('Content-type: image/svg+xml');
 $success = '#25ae19';
 $danger = '#ff391f';
 
-if (file_exists(getcwd().'/../../anubisbot/storage/bot_online')) {
+if (file_exists(getcwd().'/../../../anubisbot/storage/bot_online')) {
     $info = [
-        'color' => $success,
+        'color'  => $success,
         'status' => 'online',
     ];
 } else {
     $info = [
-        'color' => $danger,
+        'color'  => $danger,
         'status' => 'offline',
     ];
 }
