@@ -12,3 +12,5 @@ config/*
 # Project files/dirs
 .idea/
 .vscode/
+
+.env
