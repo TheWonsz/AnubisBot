@@ -6,10 +6,10 @@ use Scara\Support\ServiceProvider;
 
 class MarkdownServiceProvider extends ServiceProvider
 {
-	public function register()
-	{
-		$this->create('markdown', function() {
-			return new Markdown;
-		});
-	}
+    public function register()
+    {
+        $this->create('markdown', function () {
+            return new Markdown();
+        });
+    }
 }

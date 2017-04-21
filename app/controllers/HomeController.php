@@ -14,7 +14,7 @@ class HomeController extends BaseController
 
     public function getDoc(Request $request)
     {
-    	$doc = app_path().'/views/docs/markdown/'.$request->doc.'.md';
+        $doc = app_path().'/views/docs/markdown/'.$request->doc.'.md';
         $this->with(['doc' => $doc])->_render('docs.getdoc', $request->doc);
     }
 }
