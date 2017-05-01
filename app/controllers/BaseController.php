@@ -2,9 +2,7 @@
 
 namespace App\Controllers;
 
-use Config;
 use Scara\Http\Controller;
-use Session;
 
 class BaseController extends Controller
 {

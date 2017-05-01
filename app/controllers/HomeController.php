@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use Config;
 use Scara\Http\Request;
 
 class HomeController extends BaseController
