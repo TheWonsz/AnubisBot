@@ -1,3 +1,4 @@
+.env
 vendor/
 storage/cache/*
 !storage/cache/.gitkeep
@@ -12,5 +13,3 @@ config/*
 # Project files/dirs
 .idea/
 .vscode/
-
-.env

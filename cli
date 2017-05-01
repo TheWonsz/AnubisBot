@@ -23,6 +23,7 @@ $commands = [
         'truncate',
         'delete',
         'seed',
+        'model',
     ],
     'ClearCache',
     // controller commands
@@ -31,6 +32,7 @@ $commands = [
         'DeleteController',
     ],
     'ConfigPublish',
+    'GenKey',
 ];
 
 // Loop through commands array and register each command

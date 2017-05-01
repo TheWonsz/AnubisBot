@@ -6,7 +6,7 @@ use Scara\Support\Facades\Facade;
 
 class MarkdownFacade extends Facade
 {
-    protected static function getFacadeAccessor()
+    protected static function getAccessor()
     {
         return 'markdown';
     }

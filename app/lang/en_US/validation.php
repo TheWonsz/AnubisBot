@@ -12,6 +12,9 @@ return [
     // check if field is a valid email address
     'email'     => ':field is not a valid email address',
 
+    // check if a field is a valid url
+    'url'       => ':field is not a valid URL',
+
     // check if field meets the mimimum number of characters specified
     'min'       => ':field should be a minimum of :num characters',
 
@@ -22,5 +25,5 @@ return [
     // from:TABLE:CELL
     // TABLE: Which table to look in
     // CELL: What's the name of the cell to look at?
-    'from'        => ':field was not found in the database table :from',
+    'from'      => ':field was not found in the database table :from',
 ];

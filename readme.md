@@ -1,8 +1,8 @@
 # Scara
 [![StyleCI](https://styleci.io/repos/54073597/shield?branch=master)](https://styleci.io/repos/54073597)
-[![Packagist](https://img.shields.io/packagist/v/scaramvc/scara.svg?style=flat-square)](https://packagist.org/packages/scaramvc/scara)
+[![Latest Stable Version](https://poser.pugx.org/scaramvc/scara/v/stable?format=flat-square)](https://packagist.org/packages/scaramvc/scara)
 [![Downloads](https://img.shields.io/packagist/dt/scaramvc/scara.svg?style=flat-square)](https://packagist.org/packages/scaramvc/scara)
-[![Gemnasium](https://img.shields.io/gemnasium/ScaraMVC/Scara.svg?style=flat-square)](https://gemnasium.com/github.com/ScaraMVC/Scara)
+[![Libraries.io for GitHub](https://img.shields.io/librariesio/github/scaramvc/scara.svg?style=flat-square)](https://libraries.io/github/ScaraMVC/Scara)
 [![Packagist](https://img.shields.io/packagist/l/scaramvc/scara.svg?style=flat-square)](https://packagist.org/packages/scaramvc/scara)
 
 Scara is a PHP MVC Framework built to be lightweight and simple to use.

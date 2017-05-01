@@ -13,16 +13,17 @@
 return [
     // Driver can be 1 of 2 options
     // sqlite or mysql
-    'driver'        => 'mysql',
+    // 'driver'        => 'mysql',
+    'driver'        => env('DB_DRIVER', 'mysql'),
 
     // Database user info
-    'host'          => 'localhost',
-    'username'      => 'root',
-    'password'      => '',
+    'host'          => env('DB_USER', 'localhost'),
+    'username'      => env('DB_USER', 'root'),
+    'password'      => env('DB_PASS', ''),
 
     // Database info. Prefix and name
-    'name'          => 'scaramvc',
-    'prefix'        => 'mvc_',
+    'name'          => env('DB_NAME', 'scara'),
+    'prefix'        => env('DB_PREFIX', 'mvc_'),
 
     // If you use SQLite, you need to point to the database's
     // location

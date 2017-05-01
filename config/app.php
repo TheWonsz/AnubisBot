@@ -10,6 +10,8 @@ return [
     // Basic app configuration
     'debug'             => true,
 
+    'bot_version'       => '1.0',
+
     // this sets the default timezone for Scara
     'timezone'          => 'America/New_York',
 
@@ -17,17 +19,13 @@ return [
     'lang'              => 'en_US', // Current set language
     'langpath'          => app_path().'/lang/', // Translation location
 
-    // Set to true if you use a PHP version that
-    // doesn't support the password_* functions
-    'crypt_compat'      => false,
-
     // The table that will be used for user authentication
     // Don't include prefix! This will be automatically detected
-    'auth_table'        => 'users',
+    'auth_table'        => env('DB_AUTH', 'users'),
 
     // App Information
-    'appname'           => 'AnubisBot Documentation',
-    'basepath'          => '/anubisbot/docs',
+    'appname'           => env('APP_NAME', 'scara'),
+    'basepath'          => env('APP_BASEPATH', '/scara'),
 
     // Where are your routes defined?
     'routes'            => app_path().'/routes.php',
@@ -37,35 +35,36 @@ return [
     // Where are your views and where will you cache your
     // views?
     'views'             => app_path().'/views/',
-    'cache'             => app_path().'/../storage/cache/',
+    'cache'             => storage_path().'/cache/',
 
     // What driver should the session run?
-    // Session, Cookie, or File (File not supported yet)
-    'session'           => 'file',
+    // Session, Cookie, or File
+    'session'           => env('SESSION_DRIVER', 'file'),
 
     // If you chose file sessions, where are they stored?
-    'session_location'  => app_path().'/../storage/sessions/',
+    'session_location'  => storage_path().'/sessions/',
 
     // Session decrypt token
     // Must be 16, 24, or 32 characters
-    'token'             => 'O56JpRkTjPvKNn1S',
+    'token'             => env('APP_TOKEN', ''),
 
     // Facades (Aliases) require being registered by
     // The services provider. Any facade's service provider
     // is registered here
     'services'          => [
-        'Scara\Config\ConfigServiceProvider',
-        'Scara\Hashing\HashServiceProvider',
-        'Scara\Html\HtmlServiceProvider',
-        'Scara\Input\InputServiceProvider',
-        'Scara\Validation\ValidatorServiceProvider',
-        'Scara\Session\SessionServiceProvider',
-        'Scara\Auth\AuthenticationServiceProvider',
-        'Scara\Utils\BenchmarkServiceProvider',
-        'Scara\Mail\MailerServiceProvider',
+        Scara\Config\ConfigServiceProvider::class,
+        Scara\Foundation\EnvironmentServiceProvider::class,
+        Scara\Hashing\HashServiceProvider::class,
+        Scara\Html\HtmlServiceProvider::class,
+        Scara\Input\InputServiceProvider::class,
+        Scara\Validation\ValidatorServiceProvider::class,
+        Scara\Session\SessionServiceProvider::class,
+        Scara\Auth\AuthenticationServiceProvider::class,
+        Scara\Utils\BenchmarkServiceProvider::class,
+        Scara\Mail\MailerServiceProvider::class,
 
         // Place any custom service providers below
-        'App\Classes\Markdown\MarkdownServiceProvider',
+        App\Classes\Markdown\MarkdownServiceProvider::class,
     ],
 
     // Application aliases (Facades)
@@ -73,19 +72,20 @@ return [
     // Blade or simple importing of classes in code
     'aliases'           => [
         // Core aliases
-        'Config'        => 'Scara\Support\Facades\Config',
-        'Session'       => 'Scara\Support\Facades\Session',
-        'Html'          => 'Scara\Support\Facades\Html',
-        'Form'          => 'Scara\Support\Facades\Form',
-        'Hash'          => 'Scara\Support\Facades\Hash',
-        'Input'         => 'Scara\Support\Facades\Input',
-        'Validator'     => 'Scara\Support\Facades\Validator',
-        'Auth'          => 'Scara\Support\Facades\Auth',
-        'Benchmark'     => 'Scara\Support\Facades\Benchmark',
-        'Mail'          => 'Scara\Support\Facades\Mail',
+        'Config'        => Scara\Support\Facades\Config::class,
+        'Environment'   => Scara\Support\Facades\Environment::class,
+        'Session'       => Scara\Support\Facades\Session::class,
+        'Html'          => Scara\Support\Facades\Html::class,
+        'Form'          => Scara\Support\Facades\Form::class,
+        'Hash'          => Scara\Support\Facades\Hash::class,
+        'Input'         => Scara\Support\Facades\Input::class,
+        'Validator'     => Scara\Support\Facades\Validator::class,
+        'Auth'          => Scara\Support\Facades\Auth::class,
+        'Benchmark'     => Scara\Support\Facades\Benchmark::class,
+        'Mail'          => Scara\Support\Facades\Mail::class,
 
         // Place any custom aliases below
-        'Markdown'      => 'App\Classes\Markdown\MarkdownFacade',
+        'Markdown'      => App\Classes\Markdown\MarkdownFacade::class,
     ],
 
     // Custom validation template array

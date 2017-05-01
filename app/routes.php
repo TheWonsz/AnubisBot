@@ -25,4 +25,4 @@
 // It's using the array action, calling the controller
 // via the 'uses' index
 $router->get('/', 'HomeController@getIndex');
-$router->get('/0.4/{doc}', 'HomeController@getDoc');
+$router->get('/v/{version}/{doc}', 'HomeController@getDoc');

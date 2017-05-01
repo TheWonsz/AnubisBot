@@ -10,14 +10,14 @@ return [
     'driver'    => 'phpmailer',
 
     // set to true if you use SMTP, otherwise, set false
-    'smtp'      => true,
+    'smtp'      => env('MAIL_SMTP', true),
 
     // SMTP uses authentication
     // set below values to your SMTP settings
-    'smtp_auth' => true,
-    'host'      => 'mail.domail.com',
-    'port'      => 587,
-    'use_tls'   => false,
-    'user'      => 'test@example.com',
-    'pass'      => 'smtppassword',
+    'smtp_auth' => env('MAIL_SMTP', true),
+    'host'      => env('MAIL_HOST', 'mail.domail.com'),
+    'port'      => env('MAIL_PORT', 587),
+    'use_tls'   => env('MAIL_TLS', false),
+    'user'      => env('MAIL_USER', 'user@domail.com'),
+    'pass'      => env('MAIL_PASS', 'smtppassword'),
 ];
