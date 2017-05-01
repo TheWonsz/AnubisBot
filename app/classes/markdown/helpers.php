@@ -3,7 +3,13 @@
 if (!function_exists('version_url')) {
     function version_url($version)
     {
-        $uri = str_replace(config_get('basepath', 'app'), '', $_SERVER['REQUEST_URI']);
+        $uri = $_SERVER['REQUEST_URI'];
+        $basepath = config_get('basepath', 'app');
+
+        if ($basepath != '/') {
+            $uri = str_replace($basepath, '', $uri);
+        }
+
         $uriexp = explode('/', $uri);
         $filter = array_values(array_filter($uriexp));
 

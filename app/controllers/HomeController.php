@@ -13,11 +13,19 @@ class HomeController extends BaseController
         $this->with(['doc' => $doc, 'version' => '1.0'])->_render('docs.getdoc', 'Installation');
     }
 
+    public function getNoVersion()
+    {
+        $this->with(['version' => '1.0'])->_render('errors.404', 'Page Not Found');
+    }
+
+    public function getVersion(Request $request)
+    {
+        $this->with(['version' => $request->version])->_render('errors.404', 'Page Not Found');
+    }
+
     public function getDoc(Request $request)
     {
-        if (isset($request->version)) {
-            $doc = app_path().'/views/docs/markdown/'.str_replace('.', '_', $request->version).'/'.$request->doc.'.md';
-            $this->with(['doc' => $doc, 'version' => $request->version])->_render('docs.getdoc', $request->doc);
-        }
+        $doc = app_path().'/views/docs/markdown/'.str_replace('.', '_', $request->version).'/'.$request->doc.'.md';
+        $this->with(['doc' => $doc, 'version' => $request->version])->_render('docs.getdoc', $request->doc);
     }
 }

@@ -25,4 +25,6 @@
 // It's using the array action, calling the controller
 // via the 'uses' index
 $router->get('/', 'HomeController@getIndex');
+$router->get('/v', 'HomeController@getNoVersion');
+$router->get('/v/{version}', 'HomeController@getVersion');
 $router->get('/v/{version}/{doc}', 'HomeController@getDoc');
