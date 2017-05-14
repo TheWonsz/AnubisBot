@@ -1,4 +1,7 @@
-# AnubisBot Status Branch
+# DEFUNKT
+The status checker is abandoned, since the PHP portion of the bot is also abandoned
+
+## AnubisBot Status Branch
 This branch is used to do a status check on AnubisBot. (Built specifically for me, but can easilly be adapted to any instance)
 
 ## Output
