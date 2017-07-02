@@ -36,9 +36,9 @@ class Controller extends BaseController
     protected function _page($version, $doc = 'installation')
 	{
 		$dv = str_replace('.', '_', $version);
-		$doc = base_path().'/resources/views/docs/markdown/'.$dv.'/'.$doc.'.md';
+		$docPath = base_path().'/resources/views/docs/markdown/'.$dv.'/'.$doc.'.md';
     	return $this->_render('docs.getdoc', $doc)->with([
-    		'doc' => $doc,
+    		'doc' => $docPath,
     		'version' => $version,
     	]);
 	}
