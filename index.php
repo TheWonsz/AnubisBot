@@ -22,7 +22,7 @@ preg_replace_callback('/(ONLINE|OFFLINE)/i', function ($m) use (&$status) {
     $status = $m[1];
 }, $curl->response);
 
-$info['status'] = strtolower(ucwords($status));
+$info['status'] = ucwords(strtolower($status));
 
 switch (strtolower($status)) {
     case 'online':
